@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HARATRES</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Navigation items here -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--Main Content-->
+<div class="mt-5">
+  <h1 class="text-center">Your Cart</h1>
+  <div class="container">
+    <table class="table border" >
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of cartItems; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.product.name }}</td> <!-- Access name as item.product.name -->
+        <td>{{ item.product.price }}</td> <!-- Access price as item.product.price -->
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.product.price * item.quantity }}</td> <!-- Access price as item.product.price -->
+        <td>
+          <button class="btn btn-danger" (click)="deleteItem(item.id)">Remove</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <h3>Total: {{ getTotal() }}</h3>
+  </div>
+</div>
+
+</body>
+</html>
